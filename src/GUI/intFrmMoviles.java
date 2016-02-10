@@ -272,11 +272,11 @@ public class intFrmMoviles extends javax.swing.JFrame implements ActionListener{
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/pedidos", "root", "root");
-            JasperReport report = JasperCompileManager.compileReport("C://PEDS//Report1Moviles.jrxml");
+            JasperReport report = JasperCompileManager.compileReport("Report1Moviles.jrxml");
             
             JasperPrint print = JasperFillManager.fillReport(report, params, conn);
             JasperViewer viewer = new JasperViewer(print);
-            //viewer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            viewer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             viewer.setVisible(true);
         } catch (JRException e) {
                 e.printStackTrace();
