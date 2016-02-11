@@ -42,6 +42,7 @@ public class intFrmMoviles extends javax.swing.JFrame implements ActionListener{
     /** Creates new form intFrmMoviles */
     private intFrmMoviles() {
         initComponents();
+        getRootPane().setDefaultButton(btnReporte);
        
     }
 
