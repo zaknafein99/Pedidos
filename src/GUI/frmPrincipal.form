@@ -6,6 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnuPedsEntregados">
           <Properties>
+            <Property name="mnemonic" type="int" value="80"/>
             <Property name="text" type="java.lang.String" value="Pedidos entregados"/>
           </Properties>
           <Events>
@@ -14,6 +15,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuMoviles">
           <Properties>
+            <Property name="mnemonic" type="int" value="77"/>
             <Property name="text" type="java.lang.String" value="Moviles"/>
           </Properties>
           <Events>
@@ -22,6 +24,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuArticulos">
           <Properties>
+            <Property name="mnemonic" type="int" value="65"/>
             <Property name="text" type="java.lang.String" value="Articulos"/>
           </Properties>
           <Events>
@@ -46,6 +49,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -87,7 +91,9 @@
       <SubComponents>
         <Container class="javax.swing.JDesktopPane" name="jDesktopPane1">
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JLayeredPaneSupportLayout"/>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+            <Property name="useNullLayout" type="boolean" value="true"/>
+          </Layout>
         </Container>
       </SubComponents>
     </Container>

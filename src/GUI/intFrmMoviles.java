@@ -285,6 +285,7 @@ public class intFrmMoviles extends javax.swing.JFrame implements ActionListener{
             
             JasperPrint print = JasperFillManager.fillReport(report, params, conn);
             JasperViewer viewer = new JasperViewer(print);
+            viewer.setTitle("Liquidacion de Moviles");
             viewer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             viewer.setVisible(true);
         } catch (JRException e) {
