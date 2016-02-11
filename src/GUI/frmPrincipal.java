@@ -117,6 +117,7 @@ public class frmPrincipal extends javax.swing.JFrame {
         });
         jMenuBar1.add(mnuArticulos);
 
+        mnuClientes.setMnemonic('C');
         mnuClientes.setText("Clientes");
         mnuClientes.addMenuListener(new javax.swing.event.MenuListener() {
             public void menuSelected(javax.swing.event.MenuEvent evt) {

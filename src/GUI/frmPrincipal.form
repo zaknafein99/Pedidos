@@ -33,6 +33,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuClientes">
           <Properties>
+            <Property name="mnemonic" type="int" value="67"/>
             <Property name="text" type="java.lang.String" value="Clientes"/>
           </Properties>
           <Events>

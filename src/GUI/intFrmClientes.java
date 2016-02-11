@@ -260,7 +260,7 @@ public class intFrmClientes extends javax.swing.JFrame implements ActionListener
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Cliente cli=new Cliente();
+        final Cliente cli=new Cliente();
         Persistir p = Persistir.getInstancia();
         cli.setApellidonombre(txtApeNom.getText());
         cli.setDireccion(txtDireccion.getText());
@@ -269,7 +269,17 @@ public class intFrmClientes extends javax.swing.JFrame implements ActionListener
         cli.setEstado('A');
         p.guardar(cli);
         JOptionPane.showMessageDialog(this, "Cliente ingresado con éxito");
-        cliList.add(cli);
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
+            @Override
+            protected Void doInBackground() throws Exception {
+                cliList.add(cli);
+                return null;
+            }
+        
+        };
+        
+        worker.execute();
+        
         
         
 
@@ -314,24 +324,34 @@ public class intFrmClientes extends javax.swing.JFrame implements ActionListener
         if (txtApeNom.getText().isEmpty() || txtDireccion.getText().isEmpty() || txtTelefono.getText().isEmpty() || txtTipoCliente.getText().isEmpty())
             JOptionPane.showMessageDialog(null, "Para editar un cliente debe seleccionarlo de la lista");
         else{
-        Persistir p = Persistir.getInstancia();
-        int row = jTable1.getSelectedRow();
-        Integer val =(Integer) jTable1.getValueAt(row, 0);
-        Cliente cli = new Cliente();
-        int id = val;
-        cli = p.buscarClientePorId(id);
+        
+        
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
+            @Override
+            protected Void doInBackground() throws Exception {
+                Persistir p = Persistir.getInstancia();
+                int row = jTable1.getSelectedRow();
+                Integer val =(Integer) jTable1.getValueAt(row, 0);
+                Cliente cli = new Cliente();
+                int id = val;
+                cli = p.buscarClientePorId(id);
 
-//        cliList.remove(cli);
+        //        cliList.remove(cli);
 
-        cli.setApellidonombre(txtApeNom.getText());
-        cli.setDireccion(txtDireccion.getText());
-        cli.setTelefono(txtTelefono.getText());
-        cli.setTipocliente(txtTipoCliente.getText());
-        p.actualizarCliente(cli);
+                cli.setApellidonombre(txtApeNom.getText());
+                cli.setDireccion(txtDireccion.getText());
+                cli.setTelefono(txtTelefono.getText());
+                cli.setTipocliente(txtTipoCliente.getText());
+                p.actualizarCliente(cli);
 
-//        cliList.add(cli);
-        cliList.set(row, cli);
-
+        //      cliList.add(cli);
+                cliList.set(row, cli);
+                return null;
+            }
+        
+        };
+        
+        worker.execute();
 
         }
 }//GEN-LAST:event_btnActualizarCliActionPerformed
