@@ -57,22 +57,16 @@ public class intFrmPedidos extends javax.swing.JInternalFrame implements ActionL
     /** Creates new form intFrmPedidos */
     private intFrmPedidos(){
         initComponents();
-        //jButton1.setEnabled(false);
         
-        SwingWorker<Void, EventList> worker = new SwingWorker<Void, EventList>() {
-
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
             @Override
             protected Void doInBackground() throws Exception {
-                javax.swing.Timer timer = new javax.swing.Timer (5000, new ActionListener (){
-                    @Override
-                    public void actionPerformed(ActionEvent e){
-                        recorrerLista();
-                    }
-                });
+                recorrerLista();
                 return null;
             }
-            
+        
         };
+        
         worker.execute();
         
         
@@ -538,7 +532,17 @@ public class intFrmPedidos extends javax.swing.JInternalFrame implements ActionL
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
         
-        cargarClientes();
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
+            @Override
+            protected Void doInBackground() throws Exception {
+                cargarClientes();
+                return null;
+            }
+        
+        };
+        
+        worker.execute();
+        
         
 
 }//GEN-LAST:event_btnBuscarActionPerformed
@@ -718,7 +722,17 @@ public class intFrmPedidos extends javax.swing.JInternalFrame implements ActionL
     }//GEN-LAST:event_cboClientesActionPerformed
 
     private void btnBuscarXDirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarXDirActionPerformed
-        cargarClientesPorDireccion();
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
+            @Override
+            protected Void doInBackground() throws Exception {
+                cargarClientesPorDireccion();
+                return null;
+            }
+        
+        };
+        
+        worker.execute();
+        
     }//GEN-LAST:event_btnBuscarXDirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -735,7 +749,17 @@ public class intFrmPedidos extends javax.swing.JInternalFrame implements ActionL
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBuscarPorApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorApellidoActionPerformed
-        cargarClientesPorApellido();
+        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
+            @Override
+            protected Void doInBackground() throws Exception {
+                cargarClientesPorApellido();
+                return null;
+            }
+        
+        };
+        
+        worker.execute();
+        
 }//GEN-LAST:event_btnBuscarPorApellidoActionPerformed
 
     private void txtBuscarPorApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarPorApellidoActionPerformed
