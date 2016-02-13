@@ -58,37 +58,34 @@ public class intFrmPedidos extends javax.swing.JInternalFrame implements ActionL
     private intFrmPedidos(){
         initComponents();
         
-        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
-            @Override
-            protected Void doInBackground() throws Exception {
-                recorrerLista();
-                return null;
-            }
-        
-        };
-        
-        worker.execute();
         
         
-       
         
-        int colDate=1;
-        jTable2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        pedList = recorrerLista();
-        PedidosTableFormat tblPed = new PedidosTableFormat();
         
-        EventTableModel<Pedidos> PedTableModel = new EventTableModel(pedList, tblPed);
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        recorrerLista();
+                        int colDate=1;
+                        jTable2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                        pedList = recorrerLista();
+                        PedidosTableFormat tblPed = new PedidosTableFormat();
 
-        jTable2.setModel(PedTableModel);
-        TableColumn col = jTable2.getColumnModel().getColumn(colDate);
-        col.setCellRenderer(renderD);
+                        EventTableModel<Pedidos> PedTableModel = new EventTableModel(pedList, tblPed);
+
+                        jTable2.setModel(PedTableModel);
+                        TableColumn col = jTable2.getColumnModel().getColumn(colDate);
+                        col.setCellRenderer(renderD);
+
+                        jTable2 = tblRes.autoResizeColWidth(jTable2, PedTableModel);
+                        jTable2.setSelectionForeground(Color.RED);
+
+                //        this.setMaximum(true);
+                    }
+        });
         
-        jTable2 = tblRes.autoResizeColWidth(jTable2, PedTableModel);
-        jTable2.setSelectionForeground(Color.RED);
         this.getRootPane().setDefaultButton(btnPedidoNuevo);
         this.setMaximizable(true);
-//        this.setMaximum(true);
-        
+
     }
 
     public EventList recorrerLista(){
@@ -736,16 +733,35 @@ public class intFrmPedidos extends javax.swing.JInternalFrame implements ActionL
     }//GEN-LAST:event_btnBuscarXDirActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
-            @Override
-            protected Void doInBackground() throws Exception {
-                recorrerLista();
-                return null;
-            }
-        
-        };
-        
-        worker.execute();
+//        SwingWorker<Void, Void> worker = new SwingWorker<Void, Void>(){
+//            @Override
+//            protected Void doInBackground() throws Exception {
+//                recorrerLista();
+//                return null;
+//            }
+//        
+//        };
+//        
+//        worker.execute();
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+                    public void run() {
+                        recorrerLista();
+                        int colDate=1;
+                        jTable2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                        pedList = recorrerLista();
+                        PedidosTableFormat tblPed = new PedidosTableFormat();
+
+                        EventTableModel<Pedidos> PedTableModel = new EventTableModel(pedList, tblPed);
+
+                        jTable2.setModel(PedTableModel);
+                        TableColumn col = jTable2.getColumnModel().getColumn(colDate);
+                        col.setCellRenderer(renderD);
+
+                        jTable2 = tblRes.autoResizeColWidth(jTable2, PedTableModel);
+                        jTable2.setSelectionForeground(Color.RED);
+                    }
+                });
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnBuscarPorApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPorApellidoActionPerformed
