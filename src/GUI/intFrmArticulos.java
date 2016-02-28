@@ -39,7 +39,7 @@ public class intFrmArticulos extends javax.swing.JFrame implements ActionListene
     AutoResizeTable tblRes = AutoResizeTable.getInstancia();
     Vector headVector = new Vector(4);
     private static intFrmArticulos arts;
-    List lista = Persistir.getInstancia().listarArticulos();
+    Collection<Articulos> lista = Persistir.getInstancia().listarArticulosActivos();
     Iterator it = lista.iterator();
     private EventList<Articulos> artList = new BasicEventList<Articulos>() ;
     Persistir p = Persistir.getInstancia();
@@ -230,14 +230,29 @@ public class intFrmArticulos extends javax.swing.JFrame implements ActionListene
 
     private void btnBorrarArtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBorrarArtActionPerformed
 //        Persistir p = Persistir.getInstancia();
-        int row = jTable1.getSelectedRow();
-        Integer val =(Integer) jTable1.getValueAt(row, 0);
-        Articulos art = new Articulos();
-        int id =val;
-        art = p.buscarArticulosPorID(id);
-        p.eliminarArticulo(art);
-        artList.remove(art);
-        intFrmPedidos.getInstancia().borrarArt(art);
+//        int row = jTable1.getSelectedRow();
+//        Integer val =(Integer) jTable1.getValueAt(row, 0);
+//        Articulos art = new Articulos();
+//        int id =val;
+//        art = p.buscarArticulosPorID(id);
+//        p.eliminarArticulo(art);
+//        artList.remove(art);
+//        intFrmPedidos.getInstancia().borrarArt(art);
+        p = Persistir.getInstancia();
+        Articulos art = p.buscarArticulosPorID(Integer.valueOf(txtCod.getText()));
+        art.setEstado(0);
+        
+        p.actualizarArticulo(art);
+        lista2 = Persistir.getInstancia().listarArticulosActivos();
+        artList.clear();
+        artList.addAll(lista2);
+         if(!areFieldsEmpty()){
+             txtCod.setText("");
+             txtKg.setText("");
+             txtNom.setText("");
+             txtPrecio.setText("");
+             btnGuardar.setEnabled(true);
+         }
 
     }//GEN-LAST:event_btnBorrarArtActionPerformed
 

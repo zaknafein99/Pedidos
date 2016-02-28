@@ -7,10 +7,10 @@
     <class>dominio.Moviles</class>
     <class>dominio.Pedidos</class>
     <properties>
-      <property name="toplink.jdbc.user" value="root"/>
-      <property name="toplink.jdbc.password" value="root"/>
-      <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/pedidos"/>
+      <property name="toplink.jdbc.url" value="jdbc:mysql://localhost:3306/pedidos?zeroDateTimeBehavior=convertToNull"/>
       <property name="toplink.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="toplink.jdbc.password" value="root"/>
+      <property name="toplink.jdbc.user" value="root"/>
     </properties>
   </persistence-unit>
 </persistence>

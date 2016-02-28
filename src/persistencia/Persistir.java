@@ -92,6 +92,7 @@ public void actualizarArticulo(Articulos ar){
         existingArt.setKgs(ar.getCodigo());
         existingArt.setNombre(ar.getNombre());
         existingArt.setPrecio(ar.getPrecio());
+        existingArt.setEstado(ar.getEstado());
         em.getTransaction().commit();
     } catch (Exception e) {
         e.printStackTrace();
@@ -295,6 +296,28 @@ public List<Articulos> listarArticulos(){
   }
 
    
+}
+
+public Collection<Articulos> listarArticulosActivos(){
+  List list = null;
+  EntityManagerFactory emf = Persistence.createEntityManagerFactory("PedidosPU" );
+  EntityManager em = emf.createEntityManager();
+  em.getTransaction().begin();
+
+  try {
+    Query query = em.createNamedQuery("Articulos.findActivos");
+
+    list =  query.getResultList();
+
+
+  } catch (Exception e) {
+    System.out.println( e.getMessage() );
+    em.getTransaction().rollback();
+  } finally {
+    em.close();
+    emf.close();
+    return list;
+  }
 }
 
 public List listarClientes(){

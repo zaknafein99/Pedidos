@@ -17,7 +17,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "articulos", catalog = "pedidos", schema = "")
-@NamedQueries({@NamedQuery(name = "Articulos.findAll", query = "SELECT a FROM Articulos a"), @NamedQuery(name = "Articulos.findByCodigo", query = "SELECT a FROM Articulos a WHERE a.codigo = :codigo"), @NamedQuery(name = "Articulos.findByPrecio", query = "SELECT a FROM Articulos a WHERE a.precio = :precio"), @NamedQuery(name = "Articulos.findByKgs", query = "SELECT a FROM Articulos a WHERE a.kgs = :kgs"), @NamedQuery(name = "Articulos.findByNombre", query = "SELECT a FROM Articulos a WHERE a.nombre = :nombre")})
+@NamedQueries({@NamedQuery(name = "Articulos.findAll", query = "SELECT a FROM Articulos a"), @NamedQuery(name = "Articulos.findByCodigo", query = "SELECT a FROM Articulos a WHERE a.codigo = :codigo"), @NamedQuery(name = "Articulos.findByPrecio", query = "SELECT a FROM Articulos a WHERE a.precio = :precio"), @NamedQuery(name = "Articulos.findByKgs", query = "SELECT a FROM Articulos a WHERE a.kgs = :kgs"), @NamedQuery(name = "Articulos.findByNombre", query = "SELECT a FROM Articulos a WHERE a.nombre = :nombre"), @NamedQuery(name = "Articulos.findActivos", query = "SELECT a FROM Articulos a WHERE a.estado = 1")})
 public class Articulos implements Serializable {
     @Transient
     private PropertyChangeSupport changeSupport = new PropertyChangeSupport(this);
@@ -35,6 +35,16 @@ public class Articulos implements Serializable {
     private Integer kgs;
     @OneToMany(mappedBy = "idArticulo")
     private Collection<Pedidos> pedidosCollection;
+    @Column(name="estado")
+    private int estado;
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 
     public Articulos() {
     }

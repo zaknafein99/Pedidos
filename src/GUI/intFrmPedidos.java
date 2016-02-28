@@ -58,11 +58,11 @@ public class intFrmPedidos extends javax.swing.JInternalFrame implements ActionL
     /** Creates new form intFrmPedidos */
     private intFrmPedidos(){
         
-        try { 
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); 
-        } catch (Exception ex) { 
-            ex.printStackTrace(); 
-    }
+//        try { 
+//            UIManager.setLookAndFeel("com.sun.java.swing.plaf.motif.MotifLookAndFeel"); 
+//        } catch (Exception ex) { 
+//            ex.printStackTrace(); 
+//    }
         
         initComponents();
         java.awt.EventQueue.invokeLater(new Runnable() {
